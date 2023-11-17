@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+
+    <link rel="stylesheet" href="style.css" type="text/css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500;700&family=Poppins:wght@900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="box">
+        <div class="head">
+            <p style="color: rgb(72, 16, 125)">Age</p>
+            <p>Calculator</p>
+        </div>
+        <!-- <div> -->
+        <form action="" class="dob-sec">
+            <div class="inp-box day">
+                <p class="d">Day</p>
+                <input type="number" name="d" max="31" id="dd">
+            </div>
+            <div class="inp-box month">
+                <p class="m">Month</p>
+                <input type="number" name="m" max="12" id="mm">
+            </div>
+            <div class="inp-box year">
+                <p class="y">Year</p>
+                <input type="number" name="y" id="yy">
+            </div>
+            <button class="calbtn" onclick="calcBD(); return false">Calculate</button>
+        </form>
+        <!-- </div> -->
+        <div class="age-sec dnone" id="age-sec">
+            <p class="age-head">Your Age is :</p>
+            <div class="age">
+                <div class="years">
+                    <span id="dispy">34</span>
+                    <p>Years</p>
+                </div>
+                <div class="months">
+                    <span id="dispm">34</span>
+                    <p>Months</p>
+                </div>
+                <div class="days">
+                    <span id="dispd">34</span>
+                    <p>Days</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        const calcBD = () => {
+
+
+            const dt = new Date();
+            let iy = document.getElementById("yy").value;
+            let im = document.getElementById("mm").value;
+            let id = document.getElementById("dd").value;
+            let cy = dt.getFullYear();
+            let cm = dt.getMonth();
+            let cd = dt.getDate();
+
+            let y = 2023 - iy - 1;
+            let m = 12 - im + 1, d;
+
+            if (cm >= im) {
+                y += 1;
+                m = cm - im
+                d = cd + (30 - id);
+            }
+            else {
+                m += cm;
+                d = cd;
+            }
+
+
+            let yr = document.getElementById("dispy");
+            yr.innerText = y
+            let mn = document.getElementById("dispm");
+            mn.innerText = m
+            let dat = document.getElementById("dispd");
+            dat.innerText = d
+
+            document.getElementById('age-sec').classList.remove("dnone");
+        }
+
+    </script>
+
+</body>
+
+</html>
